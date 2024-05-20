@@ -12,7 +12,7 @@ $(function () {
   window.addEventListener("mousemove", moveCursor);
 
   /*lading_page shape*/
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 768) {
     /*lading_page shape*/
     var renderer = new THREE.WebGLRenderer({
       canvas: document.getElementById("canvas"),
@@ -130,7 +130,11 @@ $(function () {
           $(".blob").css("display", "block");
           $(".blob svg").animate({ scale: "10" }, 1500);
           $(".blob dot").animate({ scale: "2" }, 1500);
-          $(".menu").css("display", "block").animate({ opacity: "1" }, 300);
+          $(".menu")
+            .css("display", "block")
+            .animate({ opacity: "1" }, 300, function () {
+              $(".menu li a").addClass("on");
+            });
         });
       $(".bar").addClass("on");
       i = 1;
@@ -152,7 +156,11 @@ $(function () {
       );
       $(".bar:nth-of-type(2)").show();
       $(".blob svg").animate({ scale: "1" }, 1500, function () {
-        $(".menu").css("display", "none").animate({ opacity: "0" }, 100);
+        $(".menu")
+          .css("display", "none")
+          .animate({ opacity: "0" }, 100, function () {
+            $(".menu li a").removeClass("on");
+          });
         $(".side_menu").css({ zIndex: -1, display: "none", opacity: "0" });
       });
       $(".bar").removeClass("on");
@@ -162,6 +170,7 @@ $(function () {
 
   /*lading page animation*/
   function firstAnimation() {
+    $("body,html").css({ height: "100vh", overflow: "hidden" });
     $("#canvas")
       .css({ display: "block" })
       .animate(
@@ -204,6 +213,9 @@ $(function () {
             $("#header").stop().animate({ top: "0%" }, 800);
             $("#visual h2 span").addClass("on");
           }, 800);
+          setTimeout(function () {
+            $("body,html").css({ height: "auto", overflow: "auto" });
+          }, 3000);
         },
       }
     );
@@ -232,6 +244,7 @@ $(function () {
   /*on load 효과*/
   $(window).on("load", function () {
     let line = -150;
+    let more = -550;
     let i = 0;
     if (
       $(window).scrollTop() >= line &&
@@ -250,6 +263,9 @@ $(function () {
         $(".profile_right div").addClass("on");
         $(".con2 .bg-text").css({ position: "absolute" });
       }
+      if (scrollTop > con1 + 500) {
+        $(".about .timeline-content p").addClass("on");
+      }
     } else if (
       //con2부분 해당
       $(window).scrollTop() >= $(".con2").offset().top + line &&
@@ -263,7 +279,7 @@ $(function () {
     } else if (
       //con3 부분 해당
       $(window).scrollTop() >= $(".con3").offset().top &&
-      $(window).scrollTop() < $(".con4").offset().top + line + line
+      $(window).scrollTop() < $(".con4").offset().top + more
     ) {
       $(".con3").addClass("on");
       setTimeout(function () {
@@ -279,9 +295,28 @@ $(function () {
   });
   /*on load효과 끝*/
 
+  /*hello 회전 효과*/
+  function scrollRotate() {
+    const scrollTop = window.scrollY;
+    const skills = scrollTop - $(".skills").offset().top;
+    const con1 = $(".con1").offset().top;
+    const circle = document.getElementById("a-circle-i");
+    const h1 = document.getElementById("scroll-h1");
+    const img1 = document.querySelector(".icons img:nth-of-type(1)");
+    const img2 = document.querySelector(".icons img:nth-of-type(2)");
+    const rotateDeg = scrollTop * 0.8;
+    const h1Up = -(scrollTop - con1) * 1.3;
+    const rotateImg = skills * 0.1;
+    circle.style.transform = `translate(-50%, -50%) rotate(${rotateDeg}deg)`;
+    h1.style.transform = `translateY(${h1Up}px)`;
+    img1.style.transform = `rotate(${rotateImg}deg)`;
+    img2.style.transform = `rotate(${-rotateImg}deg)`;
+  }
+
   /*스크롤 효과*/
   $(window).on("scroll", function () {
     let line = -150;
+    let more = -550;
 
     if ($(window).scrollTop() == 0) {
       //visual 부분 해당
@@ -297,22 +332,15 @@ $(function () {
       if (scrollTop > con1 + 30) {
         $(".profile_right div").addClass("on");
       }
-      /*hello 회전 효과*/
-      function scrollRotate() {
-        const scrollTop = window.scrollY;
-        const con1 = $(".con1").offset().top;
-        const circle = document.getElementById("a-circle-i");
-        const h1 = document.getElementById("scroll-h1");
-        const rotateDeg = scrollTop * 0.8;
-        const h1Up = -(scrollTop - con1) * 1.3;
-        circle.style.transform = `translate(-50%, -50%) rotate(${rotateDeg}deg)`;
-        h1.style.transform = `translateY(${h1Up}px)`;
+      if (scrollTop > con1 + 500) {
+        $(".about .timeline-content p").addClass("on");
       }
+
       window.addEventListener("scroll", scrollRotate);
     } else if (
       //con2부분 해당
       $(window).scrollTop() >= $(".con2").offset().top + line &&
-      $(window).scrollTop() < $(".con3").offset().top + line + line
+      $(window).scrollTop() < $(".con3").offset().top + more
     ) {
       $(".con2").addClass("on");
       setTimeout(function () {
@@ -321,26 +349,16 @@ $(function () {
       $(".con2 .bg-text").css({ position: "fixed" });
 
       textAnimation();
-
-      if ($(window).width() < 431) {
-        $(".con4").addClass("on");
-        $(".con3").addClass("on");
-      }
     } else if (
       //con3 부분 해당
-      $(window).scrollTop() >= $(".con3").offset().top + line + line &&
-      $(window).scrollTop() < $(".con4").offset().top + line + line
+      $(window).scrollTop() >= $(".con3").offset().top + more &&
+      $(window).scrollTop() < $(".con4").offset().top + line
     ) {
       $(".con3").addClass("on");
       $(".con2 .bg-text").css({ position: "absolute" });
       setTimeout(function () {
         $(".con3 .de_bg").addClass("active");
       }, 3000);
-      if ($(window).width() < 1025) {
-        setTimeout(function () {
-          $(".con4").addClass("on");
-        }, 3000);
-      }
     } else if (
       //con4 마지막 부분 해당
       $(window).scrollTop() >= $(".con4").offset().top
@@ -414,7 +432,7 @@ $(function () {
   });
 
   /*con3 button*/
-  var gap = 100;
+  var gap = window.innerWidth < 769 ? 0 : 100;
   var j = 0;
   var total = $(".de_bg").length - 1;
   $(".ne-right").on("click", function () {
@@ -462,11 +480,6 @@ $(function () {
       if (curWidth !== preWidth) {
         location.reload();
       }
-    }
-    if ($(window).width() < 431) {
-      console.log(window.innerWidth);
-      $(".con4").addClass("on");
-      $(".con3").addClass("on");
     }
   });
   /*여기가 끝(밑에)*/
