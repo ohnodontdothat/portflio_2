@@ -230,7 +230,8 @@ $(function () {
     var scrollTop = $(window).scrollTop();
     var boxOver = $(".box-over");
     const boxHeight = $(".txt-box").height();
-    var blank = -700;
+    var blank =
+      window.innerWidth >= 480 && window.innerWidth < 768 ? -300 : -700;
 
     $(".work").each(function (index) {
       var workTop = $(this).offset().top;

@@ -37,6 +37,7 @@ body {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: normal;
   height: auto;
+  cursor: none;
 }
 
 /*cursor custom*/
@@ -53,7 +54,8 @@ body {
   transform-origin: 50%;
   left: 0;
   top: 0;
-  /* cursor: none; */
+  opacity: 0.9;
+  cursor: none;
 }
 /*통일*/
 #visual {
@@ -712,7 +714,7 @@ h2 > span {
     height: 0.8rem;
     border-radius: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -100%);
   }
   .about .timeline-content p:nth-child(even)::before {
     content: "";
@@ -1172,6 +1174,7 @@ h2 > span {
     width: 30%;
   }
   .con3_inner .mo_bg .mo_text {
+    width: 80%;
     color: white;
     text-align: center;
   }
@@ -1251,11 +1254,13 @@ h2 > span {
     transform: translateX(30%);
   }
   .design {
+    width: 500%;
     gap: 7rem;
     align-items: center;
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
   }
   .con3_inner .de_bg {
     width: 18rem;
@@ -1266,6 +1271,7 @@ h2 > span {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
   .con3_inner .de_bg img {
     max-width: 100%;
@@ -1275,13 +1281,39 @@ h2 > span {
     transform-origin: center center;
     object-fit: cover;
     object-position: center center;
+    position: relative;
   }
   .con3_inner .de_bg p {
     width: 100%;
     color: #fff;
     margin-top: 1rem;
+    font-size: 1.3rem;
   }
-
+  .con3_inner .de_bg:hover img {
+    filter: grayscale(9);
+  }
+  .con3_inner .de_bg::before {
+    content: "click!";
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.3rem;
+    opacity: 0;
+    background-color: #000;
+    z-index: 10;
+    padding: 3%;
+    border: 0.1rem solid #fff;
+    text-transform: uppercase;
+    border-radius: 20px;
+    letter-spacing: 0.2px;
+  }
+  .con3_inner .de_bg:hover::before {
+    opacity: 1;
+    transition: 0.3s;
+  }
   /*on효과*/
   .con3.on .design_wrap {
     transform: translateX(0);
@@ -1526,8 +1558,7 @@ h2 > span {
   }
   .con3_inner .modal_wrap {
     width: 70%;
-    height: 70%;
-    top: 37%;
+    height: 95%;
   }
   .con3_inner .de_modal #arrows {
     width: 100%;
@@ -1779,6 +1810,9 @@ h2 > span {
   .con .inner {
     padding: 7vh 0;
   }
+  .cursor {
+    display: none;
+  }
   /*side-menu*/
   .side_menu .menu {
     font-size: 7vh;
@@ -1853,6 +1887,10 @@ h2 > span {
   /*con1*/
   .con1_inner .profile {
     width: 62.5%;
+  }
+  .con1 .a-title h1 {
+    font-size: clamp(3rem, 25vw, 32rem);
+    letter-spacing: 0.7rem;
   }
   .a-circle-i {
     display: flex;
@@ -1954,8 +1992,26 @@ h2 > span {
   .design {
     gap: 0;
   }
-  .con3_inner .de_bg:nth-of-type(1) img {
+  .con3_inner .de_bg:nth-of-type(3) img {
     transform: scale(0.97);
+  }
+  .con3_inner .de_modal #arrows {
+    justify-content: space-around !important;
+  }
+  .con3_inner .de_modal #arrows span {
+    width: 34%;
+  }
+  .next_2 {
+    text-align: right;
+  }
+  .con3_inner .poster img {
+    width: 70%;
+  }
+  .con3_inner .mo_text > p {
+    font-size: 1.2rem;
+  }
+  .con3_inner .mo_text img {
+    min-width: 50px;
   }
   /*con4*/
   .con4 h2 {
@@ -1999,12 +2055,14 @@ h2 > span {
 /*****************************************************/
 
 @media (max-width: 767px) and (min-width: 481px) {
-  #visual,
   .con {
     height: auto;
   }
   .con .inner {
     padding: 7vh 0;
+  }
+  .cursor {
+    display: none;
   }
   /*header*/
   #header .inner {
@@ -2037,9 +2095,6 @@ h2 > span {
   #header .bars {
     display: block;
   }
-  #header .barr {
-    display: block;
-  }
   .ca_inner .before.on {
     width: 30rem;
     height: 30rem;
@@ -2050,64 +2105,233 @@ h2 > span {
     height: 55rem;
     transition: 1.3s;
   }
+
+  /*side-menu*/
+  .side_menu .menu {
+    font-size: 7vh;
+  }
   /*visual*/
+  #visual .inner {
+    width: 100%;
+    height: 100vh;
+  }
   #visual h2 {
-    font-size: 10vw;
-    transform: translateX(3vw) translateY(6vh);
+    font-size: 13vw;
+    transform: translateY(-1rem);
+  }
+  #canvas {
+    width: 100% !important;
+    height: 100% !important;
+    transform: translate(-50%, -50%);
+    transform-origin: left top;
+  }
+  .canvas-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+  .canvas-img img {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ball 13s infinite;
+    transform-origin: left top;
+  }
+  @keyframes ball {
+    0% {
+      transform: rotate(0deg) translate(-50%, -50%);
+    }
+    25% {
+      transform: rotate(180deg) translate(-50%, -50%);
+    }
+    50% {
+      transform: rotate(360deg) translate(-50%, -50%);
+    }
+    75% {
+      transform: rotate(180deg) translate(-50%, -50%);
+    }
+    100% {
+      transform: rotate(0deg) translate(-50%, -50%);
+    }
+  }
+  .ca_inner {
+    height: 100vh;
+  }
+  .ca_inner .before.on {
+    width: 20rem;
+    height: 20rem;
+    transition: 1s;
+  }
+  .ca_inner .after.on {
+    width: 40rem;
+    height: 40rem;
+    transition: 1.3s;
+  }
+  #visual .main_text {
+    height: 95%;
+  }
+  #visual p {
+    transform: translateY(0);
+    font-size: 1rem;
   }
 
   /*con1*/
+  /*con1*/
+  .con1_inner .profile {
+    width: 62.5%;
+  }
+  .con1 .a-title h1 {
+    font-size: clamp(3rem, 20vw, 32rem);
+    letter-spacing: 0.7rem;
+  }
+  .a-circle-i {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about .timeline {
+    height: 75vh;
+  }
+  .about .timeline::before {
+    height: 66vh;
+  }
+  .about .timeline-content {
+    gap: 2rem;
+  }
+  .about .timeline-content p {
+    max-width: 6.5rem;
+  }
+  .about .timeline-content p:nth-of-type(4) {
+    white-space: wrap;
+    width: 14rem;
+  }
+
+  .about .timeline p:nth-child(even) {
+    margin-left: 8rem;
+  }
+  .skills-inner {
+    width: 90%;
+    height: 36vh;
+  }
+  .im {
+    font-size: 3rem;
+    width: 100%;
+  }
+  .carousel {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .skills {
+    height: 80vh;
+  }
+  .skill_wrap {
+    width: 100%;
+  }
+  .skill {
+    font-size: 5.2rem;
+  }
+  .appeal {
+    position: relative;
+    z-index: 9;
+  }
   .about .timeline .content p {
     max-width: 14rem;
   }
-  .about .timeline p:nth-child(even) {
-    margin-left: 0;
+  .icons img:nth-of-type(3) {
+    top: 92%;
   }
-  /*con2*/
 
+  /*con2*/
+  .con2-inner .bg-text {
+    height: 20rem;
+  }
+  .con2-inner .bg-text .txt-box {
+    height: 138px;
+    font-size: 6rem;
+  }
+  .scroll-work {
+    gap: 550px;
+  }
+  .scroll-work .work {
+    width: 60%;
+  }
+  .con2_inner .work:before {
+    margin: 0vh auto 3vh;
+  }
+  .con2_inner .work_p {
+    padding: 1vh 0;
+  }
+  .scroll-work .work .btn-box {
+    white-space: nowrap;
+  }
+  .scroll-work .work .btn-box p {
+    font-size: 2rem;
+  }
+  .con2_inner .work_btn span {
+    font-size: 1.1vw;
+    margin: 1vw;
+  }
+  .con2-inner .bg-text .no-animation .box-over .tb-inner {
+    font-size: 5rem;
+  }
+  .con2 .modal {
+    width: 85%;
+  }
+  /*con3*/
   /*con3*/
   .con3 {
-    height: 70vh !important;
-    min-height: 70vh!;
+    height: 80vh;
+    position: relative;
+    border-radius: 0 0 80px 80px;
   }
-  .con3_inner {
-    padding: 3rem 0 !important ;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .con3 .con3_inner {
+    width: 90% !important;
+    margin: 0px auto;
   }
-  .con3_inner h2 {
-    font-size: 8vw;
+  .con3_inner .de-arrow {
+    transform: translateX(2rem) translateY(0rem);
+    align-items: center;
   }
   .con3_inner .de_bg {
-    width: 100%;
-    max-width: 180px;
-    height: 255px;
-    position: static;
-    transform: translate(0%, 0%);
-    text-align: center;
+    width: 15rem;
+    height: 24rem;
+  }
+  .de_carousel {
+    display: block;
   }
   .design_wrap {
-    width: 190%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 50.5%;
+    max-width: 240px;
+    min-width: 240px;
+    height: 80%;
+    margin: 0px auto;
   }
   .design {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+    gap: 0;
   }
-  .con3_inner .de_bg img {
-    width: 100%;
-    object-fit: cover;
+  .con3_inner .de_bg:nth-of-type(3) img {
+    transform: scale(0.97);
   }
-  .con3_inner h2:nth-of-type(1) {
-    top: 13%;
+  .con3_inner .de_modal #arrows {
+    justify-content: space-around !important;
+  }
+  .con3_inner .de_modal #arrows span {
+    width: 34%;
+  }
+  .next_2 {
+    text-align: right;
+  }
+  .con3_inner .poster img {
+    width: 70%;
+  }
+  .con3_inner .mo_text > p {
+    font-size: 1rem;
+  }
+  .con3_inner .mo_text img {
+    min-width: 45px;
   }
 
   /*con4*/
@@ -2165,6 +2389,9 @@ h2 > span {
 
   .con {
     height: auto !important;
+  }
+  .cursor {
+    display: none;
   }
   /*header*/
   #wrap {
@@ -2353,7 +2580,7 @@ h2 > span {
     height: 72px;
   }
   .con2-inner .bg-text .no-animation .box-over .tb-inner {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .con2-inner .bg-text .txt-box .tb-inner {
     width: 100%;
@@ -2405,6 +2632,13 @@ h2 > span {
     white-space: nowrap;
     font-size: 0.9rem;
   }
+  .scroll-work .work .btn-box a,
+  .scroll-work .work .btn-box p {
+    font-size: 1.7rem;
+  }
+  .modal {
+    width: 73%;
+  }
   /*con3*/
   .con3 {
     height: 70vh !important;
@@ -2420,39 +2654,36 @@ h2 > span {
   .con3_inner h2 {
     font-size: 12vw;
   }
-  .con3_inner .de_bg {
-    width: 100%;
-    min-width: 80%;
-    position: static;
-    transform: translate(0%, 0%);
-    text-align: center;
-  }
+
   .design_wrap {
     width: 100%;
-    height: 80%;
+    height: 78%;
+    margin: 3rem auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .design {
-    width: 100%;
     display: flex;
     align-items: center;
     gap: 0;
   }
   .con3_inner .de_bg {
-    width: 391px;
-    height: 451px;
+    width: calc(100% / 5);
+    height: 36rem;
+    position: static;
+    transform: translate(0%, 0%);
+    text-align: center;
   }
   .con3_inner .de_bg img {
-    width: 270px;
-    height: 451px;
+    width: 100%;
+    height: 507px;
     object-fit: cover;
   }
   .con3_inner .modal_wrap {
-    width: 70%;
-    height: 60%;
+    width: 74%;
+    height: 70%;
   }
   .con3_inner .de_modal #arrows {
     width: 100%;
@@ -2474,6 +2705,7 @@ h2 > span {
   }
   .con3_inner .mo_text > p {
     margin-bottom: 1rem;
+    font-size: 0.9rem;
   }
   .con3_inner .mo_text img {
     width: 35%;
@@ -2488,6 +2720,9 @@ h2 > span {
   .con3_inner .de-arrow {
     transform: translate(0);
     align-items: center;
+  }
+  .con3_inner .poster img {
+    width: 90%;
   }
   /*con4*/
   .con4 h2 {
