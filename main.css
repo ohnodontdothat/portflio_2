@@ -1601,7 +1601,7 @@ h2 > span {
 /*******************************************/
 @media (max-width: 1512px) and (min-width: 1024px) {
   body {
-    cursor: default;
+    cursor: none;
   }
   #wrap {
     width: 100%;
@@ -1812,6 +1812,9 @@ h2 > span {
 /************************************/
 
 @media (max-width: 1023px) and (min-width: 768px) {
+  body {
+    cursor: default;
+  }
   #header .inner {
     padding: 2rem;
   }
