@@ -12,7 +12,7 @@ $(function () {
   window.addEventListener("mousemove", moveCursor);
 
   /*lading_page shape*/
-  if (window.innerWidth > 768) {
+  if (window.innerWidth > 1023) {
     /*lading_page shape*/
     var renderer = new THREE.WebGLRenderer({
       canvas: document.getElementById("canvas"),
