@@ -362,7 +362,8 @@ $(function () {
       }, 3000);
     } else if (
       //con4 마지막 부분 해당
-      $(window).scrollTop() >= $(".con4").offset().top
+      $(window).scrollTop() >=
+      $(".con4").offset().top + more
     ) {
       $(".con4").addClass("on");
     }
@@ -433,7 +434,7 @@ $(function () {
   });
 
   /*con3 button*/
-  var gap = window.innerWidth < 769 ? 0 : 100;
+  var gap = window.innerWidth < 1023 ? 0 : 100;
   var j = 0;
   var total = $(".de_bg").length - 1;
   $(".ne-right").on("click", function () {

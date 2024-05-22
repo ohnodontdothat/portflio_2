@@ -40,6 +40,10 @@ body {
 }
 
 /*통일*/
+#wrap {
+  overflow-x: hidden;
+  width: 100%;
+}
 #visual {
   width: 100%;
   height: 100vh;
@@ -787,6 +791,8 @@ h2 > span {
   .appeal {
     margin-top: 2rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
   }
   .appeal p {
     color: #888;
@@ -1045,7 +1051,7 @@ h2 > span {
     display: flex;
   }
   .modal {
-    width: 55%;
+    width: 62%;
     min-width: 55%;
     height: 90%;
     max-height: 90%;
@@ -1068,6 +1074,7 @@ h2 > span {
     position: relative;
     z-index: 99;
   }
+
   .mo_con {
     width: 100%;
   }
@@ -1174,6 +1181,15 @@ h2 > span {
   }
   .con3_inner .poster img {
     width: 30%;
+  }
+  .con3_inner .mo_bg .poster {
+    margin: 3.5% auto;
+  }
+  .con3_inner .mo_bg:nth-of-type(4) .poster {
+    transform: scale(0.94);
+  }
+  .con3_inner .mo_bg:nth-of-type(4) .poster img {
+    height: 515px;
   }
   .con3_inner .mo_bg .mo_text {
     width: 80%;
@@ -1456,7 +1472,7 @@ h2 > span {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 9.64vw auto 3.39vw 3vw;
+    margin: 9.64vw auto 3.39vw;
   }
   .con4_inner p {
     display: flex;
@@ -1526,6 +1542,9 @@ h2 > span {
   .ca_inner .after.on {
     width: 90rem;
     height: 90rem;
+  }
+  #visual p {
+    transform: translateY(11rem);
   }
   /*timeline*/
   .about .timeline {
@@ -1635,12 +1654,12 @@ h2 > span {
   }
   /*canvas*/
   .ca_inner .before.on {
-    width: 37rem;
-    height: 37rem;
+    width: 33rem;
+    height: 33rem;
   }
   .ca_inner .after.on {
-    width: 80rem;
-    height: 80rem;
+    width: 68rem;
+    height: 68rem;
   }
   /*visual*/
   #visual .main_text {
@@ -1648,6 +1667,7 @@ h2 > span {
   }
   #visual p {
     font-size: 2vw;
+    transform: translateY(8rem);
   }
   #visual h2 {
     transform: translateX(3vw) translateY(13vh);
@@ -1698,20 +1718,28 @@ h2 > span {
     max-width: 9rem;
   }
   .about .timeline p:nth-child(even) {
-    margin-left: 16rem;
+    margin-left: 186px;
   }
   .about .timeline {
-    height: 50vh;
+    height: 630px;
   }
   .about .timeline::before {
-    height: 40vh;
+    height: 555px;
   }
   .about .timeline-content {
-    height: 40vh;
+    width: 330px;
+    height: 582px;
+  }
+  .skills {
+    height: 386px;
   }
   .skills-inner {
     width: 90%;
-    height: 9vh;
+    height: 110px;
+  }
+  .icons img:nth-of-type(2) {
+    top: -35%;
+    left: 86%;
   }
   /*con2*/
   .con2 {
@@ -1769,12 +1797,9 @@ h2 > span {
   .con3_inner h2:nth-of-type(2) {
     bottom: 2%;
   }
-  .con3_inner .de_modal {
-    height: 1024px;
-  }
   .con3_inner .modal_wrap {
     width: 70%;
-    height: 70%;
+    min-height: 603px;
   }
   .con3_inner .de_modal #arrows {
     width: 100%;
@@ -1783,6 +1808,9 @@ h2 > span {
   .con3_inner .de_modal #arrows span {
     width: 8%;
     margin: 0;
+  }
+  .next_2 {
+    text-align: right;
   }
   .con3_inner .div_wrap {
     top: 50%;
@@ -1799,6 +1827,9 @@ h2 > span {
   }
   .con3_inner .mo_text img {
     width: 35%;
+  }
+  .con3_inner .mo_bg:nth-of-type(4) .poster img {
+    height: auto;
   }
   /*con4*/
   .con4 {
@@ -1911,6 +1942,17 @@ h2 > span {
     flex-direction: column;
     justify-content: center;
   }
+  .about .timeline {
+    height: 610px;
+  }
+  .about .timeline-content {
+    width: 306px;
+    height: 555px;
+    gap: 50px;
+  }
+  .about .timeline::before {
+    height: 530px;
+  }
   .about .timeline-content p {
     max-width: 8rem;
   }
@@ -1927,7 +1969,7 @@ h2 > span {
     font-size: 3rem;
   }
   .carousel {
-    height: 77%;
+    height: 100px;
   }
   .skill_wrap {
     width: calc(100% / 2);
@@ -1978,6 +2020,7 @@ h2 > span {
   /*con3*/
   .con3 {
     height: 70vh;
+    min-height: 820px;
     position: relative;
     border-radius: 0 0 80px 80px;
   }
@@ -2019,13 +2062,18 @@ h2 > span {
     text-align: right;
   }
   .con3_inner .poster img {
-    width: 70%;
+    width: 50%;
+    min-width: 40%;
+    max-width: 70%;
   }
   .con3_inner .mo_text > p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .con3_inner .mo_text img {
-    min-width: 50px;
+    min-width: 40px;
+  }
+  .con3_inner .mo_bg:nth-of-type(4) .poster img {
+    height: auto;
   }
   /*con4*/
   .con4 h2 {
@@ -2209,17 +2257,29 @@ h2 > span {
     flex-direction: column;
     justify-content: center;
   }
+  .about .age-img p {
+    font-size: 5rem;
+  }
+  .strong > div {
+    margin-bottom: 0.5rem;
+  }
+  .con1_inner .profile_right div.on h2 {
+    white-space: nowrap;
+  }
   .about .timeline {
-    height: 75vh;
+    height: 500px;
   }
   .about .timeline::before {
-    height: 66vh;
+    height: 490px;
   }
   .about .timeline-content {
+    width: 234px;
     gap: 2rem;
+    height: 430px;
   }
   .about .timeline-content p {
     max-width: 6.5rem;
+    white-space: wrap;
   }
   .about .timeline-content p:nth-of-type(4) {
     white-space: wrap;
@@ -2284,12 +2344,16 @@ h2 > span {
   .scroll-work .work .btn-box {
     white-space: nowrap;
   }
+  .scroll-work .work .btn-box a,
   .scroll-work .work .btn-box p {
-    font-size: 2rem;
+    font-size: 1rem;
   }
   .con2_inner .work_btn span {
     font-size: 1.1vw;
     margin: 1vw;
+  }
+  .scroll-work .work-inner p:nth-of-type(2) {
+    font-size: 0.7rem;
   }
   .con2-inner .bg-text .no-animation .box-over .tb-inner {
     font-size: 5rem;
@@ -2552,13 +2616,22 @@ h2 > span {
   .about .age-img p {
     font-size: 5rem;
   }
+  .about .timeline {
+    width: 110%;
+    height: 660px;
+  }
+  .about .timeline::before {
+    height: 600px;
+  }
   .about .timeline-content {
     width: 100%;
+    height: 660px;
     margin: 2rem auto 0;
     text-align: right;
   }
   .about .timeline-content p {
-    max-width: 8rem;
+    max-width: 9rem;
+    white-space: wrap;
   }
   .skills-inner {
     width: 95%;
@@ -2673,7 +2746,9 @@ h2 > span {
   .con3_inner h2 {
     font-size: 12vw;
   }
-
+  .con3.on .design_wrap {
+    transition: 1.5s;
+  }
   .design_wrap {
     width: 100%;
     height: 78%;
@@ -2682,6 +2757,7 @@ h2 > span {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transform: translateX(100%);
   }
   .design {
     display: flex;
