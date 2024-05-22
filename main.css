@@ -1813,7 +1813,7 @@ h2 > span {
 
 @media (max-width: 1023px) and (min-width: 768px) {
   body {
-    cursor: default;
+    cursor: default !important;
   }
   #header .inner {
     padding: 2rem;
@@ -2070,7 +2070,7 @@ h2 > span {
 
 @media (max-width: 767px) and (min-width: 481px) {
   body {
-    cursor: default;
+    cursor: default !important;
   }
   .con {
     height: auto;
@@ -2400,10 +2400,12 @@ h2 > span {
     width: 100%;
     max-width: 100%;
   }
+  body {
+    cursor: default !important;
+  }
   .inner h2 {
     font-size: 9.5vw;
   }
-
   .con {
     height: auto !important;
   }
