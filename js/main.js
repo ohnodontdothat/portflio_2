@@ -214,7 +214,7 @@ $(function () {
             $("#visual h2 span").addClass("on");
           }, 800);
           setTimeout(function () {
-            $("body,html").css({ height: "auto", overflow: "auto" });
+            $("body,html").css({ height: "auto", overflow: "visible" });
           }, 3000);
         },
       }
